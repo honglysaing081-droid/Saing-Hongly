@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Variable Lesson</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700&family=Moul&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Kantumruy Pro', sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* ប្រអប់ផ្ទុកខ្លឹមសារធំ */
+        .container {
+            width: 1000px;
+            background-color: white;
+            border: 4px solid #1a237e;
+            border-radius: 15px;
+            overflow: hidden;
+            min-height: 800px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* ផ្នែក Header ពណ៌ខៀវ */
+        header {
+            background-color: #1a237e;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-section img {
+            width: 60px;
+            margin-right: 15px;
+        }
+
+        .uni-info .en { font-weight: bold; font-size: 18px; display: block; }
+        .uni-info .kh { font-size: 14px; display: block; }
+
+        /* ប៊ូតុង Home ពណ៌ក្រហម */
+        .home-btn {
+            background-color: #d50000;
+            color: white;
+            text-decoration: none;
+            padding: 10px 40px;
+            border-radius: 12px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 24px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .home-btn:hover {
+            background-color: #b71c1c;
+            transform: scale(1.05);
+        }
+
+        /* ខ្លឹមសារមេរៀន */
+        .content {
+            padding: 40px 50px;
+        }
+
+        .main-title {
+            color: #d10000;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .lesson-part {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            color: #1a237e;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            color: #d10000;
+        }
+
+        .description {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        /* ប្រអប់បង្ហាញកូដ PHP ពណ៌ខៀវ */
+        .php-code-box {
+            background-color: #20338a;
+            color: white;
+            padding: 40px;
+            border-radius: 30px;
+            font-family: 'Consolas', monospace;
+            font-size: 24px;
+            line-height: 1.5;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+            border: 2px solid #00b0ff;
+            margin-bottom: 30px;
+        }
+
+        /* ច្បាប់នៃការដាក់ឈ្មោះ */
+        .rules-list {
+            list-style: none;
+            font-size: 18px;
+            line-height: 2;
+        }
+
+        .rules-list li {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo-section">
+                <img src="RbgBBU.png" alt="BBU Logo">
+                <div class="uni-info">
+                    <span class="en">Build Bright University</span>
+                    <span class="kh">សាកលវិទ្យាល័យបៀលប្រាយ</span>
+                </div>
+            </div>
+            <a href="index.html" class="home-btn">Home</a>
+        </header>
+
+        <main class="content">
+            <h1 class="main-title">About: Variable</h1>
+
+            <div class="lesson-part">
+                <h2 class="section-title">1. របៀបប្រកាស <span>Variable</span></h2>
+                <p class="description">រាល់ Variable ក្នុង PHP ទាំងអស់ត្រូវតែចាប់ផ្ដើមដោយសញ្ញាដុល្លារ $ ជានិច្ច។EX:</p>
+                
+                <div class="php-code-box">
+                    <pre>
+&lt;?php
+  $name = "Saing Hongly"; // ប្រភេទអត្ថបទ (String)
+  $age = 20;              // ប្រភេទលេខ (Integer)
+  $gpa = 3.5;             // ប្រភេទលេខទសភាគ (Float)
+?&gt;
+                    </pre>
+                </div>
+            </div>
+
+            <div class="lesson-part">
+                <h2 class="section-title">2. ច្បាប់ក្នុងការដាក់ឈ្មោះ: <span>Variable</span></h2>
+                <ul class="rules-list">
+                    <li>១. ត្រូវចាប់ផ្ដើមដោយសញ្ញា $</li>
+                    <li>២. បន្ទាប់ពីសញ្ញា $ ត្រូវតែជា អក្សរ ឬសញ្ញា Underscore (_)។ មិនអាចចាប់ផ្ដើមដោយលេខឡើយ។ មិនត្រូវដកឃ្លាក្នុងឈ្មោះ Variable ទេ</li>
+                    <li>៣. ឈ្មោះ Variable ដែលមានអក្សរតូច និងធំ គឺខុសគ្នា។ ឧទាហរណ៍ $color និង $COLOR គឺជា Variable ពីរផ្សេងគ្នា។</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
