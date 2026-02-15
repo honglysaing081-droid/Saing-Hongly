@@ -3,228 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP Data Types Lesson</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <title>PHP Data Types Lesson - BBU</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700&family=Dancing+Script:wght@700&family=Inconsolata:wght@700&display=swap" rel="stylesheet">
     <style>
+        /* កំណត់អថេរពណ៌ និងហ្វុន */
         :root {
-            --bbu-blue: #1a237e;
-            --code-bg: #1a237e;
+            --header-blue: #161e5c;
+            --code-blue: #1a237e;
             --accent-red: #e60000;
-            --light-pink: #ffcdd2;
+            --divider-color: #ffcdd2;
+            --text-font: 'Kantumruy Pro', sans-serif;
+            --code-font: 'Inconsolata', monospace;
+            --script-font: 'Dancing Script', cursive;
         }
 
+        /* Reset CSS */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Kantumruy Pro', sans-serif;
         }
 
         body {
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-            min-height: 1000vh;
-        }
-
-        /* ប្រអប់កាតធំ */
-        .main-card {
-            width: 1000px;
+            font-family: var(--text-font);
             background-color: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
-            border: 1px solid #ddd;
+            /* ធ្វើឱ្យពេញអេក្រង់ */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Header ពណ៌ខៀវ */
+        /* --- Header Section --- */
         header {
-            background-color: var(--bbu-blue);
+            background-color: var(--header-blue);
             color: white;
-            padding: 15px 30px;
+            padding: 15px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-shrink: 0; /* ការពារមិនឱ្យ Header រួមតូច */
         }
 
-        .logo-box {
+        .logo-container {
             display: flex;
             align-items: center;
         }
 
-        .logo-box img {
-            width: 55px;
+        .logo-container img {
+            height: 60px;
             margin-right: 15px;
         }
 
-        .uni-name .en { font-weight: bold; font-size: 18px; display: block; }
-        .uni-name .kh { font-size: 14px; display: block; }
+        .uni-name {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .uni-name .en { font-size: 20px; font-weight: bold; }
+        .uni-name .kh { font-size: 16px; }
 
         .home-btn {
             background-color: var(--accent-red);
             color: white;
             text-decoration: none;
-            padding: 8px 40px;
-            border-radius: 12px;
-            font-family: 'Dancing Script', cursive;
-            font-size: 24px;
+            padding: 10px 40px;
+            border-radius: 15px;
+            font-family: var(--script-font);
+            font-size: 28px;
             font-weight: bold;
-            box-shadow: 0 4px 0px #b30000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
         }
 
-        /* តួខ្លួនមេរៀន */
-        .content-wrapper {
+        .home-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* --- Main Content Section --- */
+        main {
+            flex-grow: 1; /* ធ្វើឱ្យផ្នែកនេះរីកពេញកន្លែងដែលនៅសល់ */
             display: flex;
-            padding: 40px 50px;
-            position: relative;
-            min-height: 650px;
+            position: relative; /* សម្រាប់ដាក់ខ្សែបន្ទាត់កណ្តាល */
+            padding: 40px 0;
         }
 
-        /* ខ្សែបន្ទាត់ក្រហមស្តើងនៅកណ្តាល */
-        .content-wrapper::after {
-            content: "";
+        /* ខ្សែបន្ទាត់ក្រហមនៅកណ្តាល */
+        main::after {
+            content: '';
             position: absolute;
             left: 50%;
-            top: 40px;
-            bottom: 40px;
-            width: 1px;
-            background-color: var(--light-pink);
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--divider-color);
+            transform: translateX(-50%);
         }
 
         .column {
-            width: 50%;
-            padding: 0 20px;
+            flex: 1; /* ចែកទំហំស្មើគ្នា */
+            padding: 0 50px;
         }
 
-        .main-title {
+        /* Typography Styles */
+        h1.main-title {
             color: var(--accent-red);
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h2.sub-title {
             font-size: 32px;
             font-weight: bold;
-            margin-bottom: 25px;
+            margin-bottom: 40px;
+            color: #333;
         }
 
-        .how-to-use {
-            font-size: 26px;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-
-        .how-to-use span {
+        h2.sub-title span {
             color: var(--accent-red);
         }
 
-        /* រចនាប័ទ្មចំណុចនីមួយៗ */
-        .item-group {
-            margin-bottom: 22px;
+        .item {
+            margin-bottom: 35px;
         }
 
-        .label {
-            font-size: 20px;
+        .item-title {
+            font-size: 24px;
             font-weight: bold;
-            margin-bottom: 8px;
+            margin-bottom: 15px;
             color: #222;
         }
 
-        /* ប្រអប់កូដរាងមូល */
-        .code-pill {
-            background-color: var(--code-bg);
-            color: white;
-            display: inline-block;
-            padding: 10px 30px;
-            border-radius: 50px;
-            font-family: 'Consolas', monospace;
-            font-size: 22px;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        .item-title .kh-hint {
+            font-weight: normal;
+            font-size: 16px;
+            color: #555;
         }
 
-        /* ប្រអប់កូដសម្រាប់ Object (រាងបួនជ្រុងមូល) */
-        .code-block {
-            background-color: var(--code-bg);
+        /* --- Code Styles --- */
+        .code-pill {
+            display: inline-block;
+            background-color: var(--code-blue);
             color: white;
-            padding: 20px;
-            border-radius: 25px;
-            font-family: 'Consolas', monospace;
-            font-size: 16px;
-            line-height: 1.4;
-            margin-bottom: 10px;
+            font-family: var(--code-font);
+            font-size: 26px;
+            padding: 15px 40px;
+            border-radius: 50px; /* រាងមូល */
+            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.2);
         }
+
+        .code-block-container {
+            background-color: var(--code-blue);
+            color: white;
+            border-radius: 25px; /* រាងបួនជ្រុងមូល */
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.2);
+            width: fit-content;
+        }
+
+        pre.code-block {
+            font-family: var(--code-font);
+            font-size: 20px;
+            line-height: 1.5;
+            margin: 0;
+            white-space: pre; /* រក្សាការដកឃ្លា */
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="main-card">
-        <header>
-            <div class="logo-box">
-                <img src="RbgBBU.png" alt="BBU Logo">
-                <div class="uni-name">
-                    <span class="en">Build Bright University</span>
-                    <span class="kh">សាកលវិទ្យាល័យបៀលប្រាយ</span>
-                </div>
-            </div>
-            <a href="index.html" class="home-btn">Home</a>
-        </header>
-
-        <div class="content-wrapper">
-            <div class="column">
-                <h1 class="main-title">About: Data Types</h1>
-                <h2 class="how-to-use">របៀបប្រើប្រាស់ <span>Data Types</span></h2>
-
-                <div class="item-group">
-                    <p class="label">1. Integer (ចំនួនគត់)</p>
-                    <div class="code-pill">$age = 25;</div>
-                </div>
-
-                <div class="item-group">
-                    <p class="label">2. Float / Double (លេខទសភាគ)</p>
-                    <div class="code-pill">$price = 12.5;</div>
-                </div>
-
-                <div class="item-group">
-                    <p class="label">3. String (អក្សរ)</p>
-                    <div class="code-pill">$name = "Sokha";</div>
-                </div>
-
-                <div class="item-group">
-                    <p class="label">4. Boolean (true/false)</p>
-                    <div class="code-pill">$isLogin = true;</div>
-                </div>
-            </div>
-
-            <div class="column">
-                <div class="item-group" style="margin-top: 15px;">
-                    <p class="label">5. Array (អារេ)</p>
-                    <div class="code-pill" style="width: 100%;">$colors = array("Red", "Green", "Blue");</div>
-                </div>
-
-                <div class="item-group">
-                    <p class="label">6. Object</p>
-                    <div class="code-block">
-                        class Car {<br>
-                        &nbsp;&nbsp;public $color;<br>
-                        }<br><br>
-                        $myCar = new Car();<br>
-                        $myCar->color = "Red";<br>
-                        echo "myCar: " . $myCar->color;
-                    </div>
-                </div>
-
-                <div class="item-group">
-                    <p class="label">7. NULL (អថេរដែលគ្មានតម្លៃ)</p>
-                    <div class="code-pill">$data = null;</div>
-                </div>
-
-                <div class="item-group">
-                    <p class="label">8. Resource <span style="font-size: 13px; font-weight: normal;">(ប្រើសម្រាប់ភ្ជាប់ធនធានខាងក្រៅ...)</span></p>
-                    <div class="code-pill" style="font-size: 14px; width: 100%;">$conn = mysqli_connect("localhost", "root", "", "test");</div>
-                </div>
+    <header>
+        <div class="logo-container">
+            <img src="https://bbu.edu.kh/img/bbu-logo.png" alt="BBU Logo">
+            <div class="uni-name">
+                <span class="en">Build Bright University</span>
+                <span class="kh">សាកលវិទ្យាល័យបៀលប្រាយ</span>
             </div>
         </div>
-    </div>
+        <a href="#" class="home-btn">Home</a>
+    </header>
+
+    <main>
+        <div class="column left-col">
+            <h1 class="main-title">About: Data Types</h1>
+            <h2 class="sub-title">របៀបប្រើប្រាស់ <span>Data Types</span></h2>
+
+            <div class="item">
+                <div class="item-title">1. Integer (ចំនួនគត់)</div>
+                <div class="code-pill">$age = 25;</div>
+            </div>
+
+            <div class="item">
+                <div class="item-title">2. Float / Double (លេខទសភាគ)</div>
+                <div class="code-pill">$price = 12.5;</div>
+            </div>
+
+            <div class="item">
+                <div class="item-title">3. String (អក្សរ)</div>
+                <div class="code-pill">$name = "Sokha";</div>
+            </div>
+
+            <div class="item">
+                <div class="item-title">4. Boolean (true/false)</div>
+                <div class="code-pill">$isLogin = true;</div>
+            </div>
+        </div>
+
+        <div class="column right-col" style="padding-top: 115px;"> <div class="item">
+                <div class="item-title">5. Array (អារេ)</div>
+                <div class="code-pill">$colors = array("Red", "Green", "Blue");</div>
+            </div>
+
+            <div class="item">
+                <div class="item-title">6. Object (វត្ថុ) ប្រើជាមួយ Class</div>
+                <div class="code-block-container">
+<pre class="code-block">class Car {
+  public $color;
+}
+
+$myCar = new Car();
+$myCar->color = "Red";</pre>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-title">7. NULL (អថេរដែលគ្មានតម្លៃ)</div>
+                <div class="code-pill">$data = null;</div>
+            </div>
+
+            <div class="item">
+                <div class="item-title">8. Resource <span class="kh-hint">(ប្រើសម្រាប់ភ្ជាប់ធនធានខាងក្រៅ ដូចជា database ឬ file)</span></div>
+                <div class="code-pill" style="font-size: 20px;">$conn = mysqli_connect("localhost", "root", "", "test");</div>
+            </div>
+        </div>
+    </main>
 
 </body>
-
 </html>
-
