@@ -3,243 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BBU - Student Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <title>PHP Data Types Lesson - BBU</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700&family=Dancing+Script:wght@700&family=Inconsolata:wght@700&display=swap" rel="stylesheet">
     <style>
+        /* កំណត់អថេរពណ៌ និងហ្វុន */
         :root {
-            --bbu-blue: #1a237e;
-            --accent-red: #d50000;
-            --sky-blue: #03a9f4;
+            --header-blue: #161e5c;
+            --code-blue: #1a237e;
+            --accent-red: #e60000;
+            --divider-color: #ffcdd2;
+            --text-font: 'Kantumruy Pro', sans-serif;
+            --code-font: 'Inconsolata', monospace;
+            --script-font: 'Dancing Script', cursive;
         }
 
+        /* Reset CSS */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Kantumruy Pro', sans-serif;
         }
 
         body {
-            background-color: #f0f2f5; /* ពណ៌ផ្ទៃខាងក្រោយក្រៅកាត */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-
-        /* ប្រអប់កាតធំ (Main Container) */
-        .portfolio-card {
-            width: 100%;
-            max-width: 1050px;
+            font-family: var(--text-font);
             background-color: white;
-            border-radius: 50px; /* ជ្រុងមូលខ្លាំងតាមរូបភាព */
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15); /* ស្រមោលជុំវិញកាត */
-            border: 1px solid #ddd;
+            /* ធ្វើឱ្យពេញអេក្រង់ */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Header ផ្នែកខាងលើ */
+        /* --- Header Section --- */
         header {
-            background-color: var(--bbu-blue);
+            background-color: var(--header-blue);
             color: white;
-            padding: 20px 50px;
+            padding: 15px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom-left-radius: 45px;
-            border-bottom-right-radius: 45px;
+            flex-shrink: 0; /* ការពារមិនឱ្យ Header រួមតូច */
         }
 
-        .logo-box {
+        .logo-container {
             display: flex;
             align-items: center;
         }
 
-        .logo-box img {
-            width: 60px;
+        .logo-container img {
+            height: 60px;
             margin-right: 15px;
         }
 
-        .uni-text .en { font-weight: bold; font-size: 20px; display: block; }
-        .uni-text .kh { font-size: 15px; display: block; }
-
-        .welcome-box { text-align: right; }
-        .welcome-box .top { font-family: 'Dancing Script', cursive; font-size: 30px; line-height: 1; }
-        .welcome-box .bottom { color: #ff1744; font-weight: 900; font-size: 24px; margin-top: 5px; }
-
-        /* តួខ្លួនកណ្តាល (Main Content) */
-        .main-body {
+        .uni-name {
             display: flex;
-            padding: 60px 80px;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
         }
 
-        .info-side { width: 50%; }
-        
-        .hi-text { font-size: 34px; font-weight: 800; margin-bottom: 20px; color: #333; }
+        .uni-name .en { font-size: 20px; font-weight: bold; }
+        .uni-name .kh { font-size: 16px; }
 
-        .name-tag {
-            background-color: var(--bbu-blue);
+        .home-btn {
+            background-color: var(--accent-red);
             color: white;
-            display: inline-block;
-            padding: 12px 45px;
-            border-radius: 20px;
-            font-size: 26px;
+            text-decoration: none;
+            padding: 10px 40px;
+            border-radius: 15px;
+            font-family: var(--script-font);
+            font-size: 28px;
             font-weight: bold;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.3);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
         }
 
-        .status-text { font-size: 22px; margin-bottom: 20px; }
-        .status-text span { font-family: 'Dancing Script', cursive; font-weight: bold; font-size: 26px; }
+        .home-btn:hover {
+            transform: translateY(-2px);
+        }
 
-        .major-text { font-size: 24px; font-weight: bold; margin-bottom: 40px; color: #333; }
-
-        /* ប្រអប់ Skill Icons */
-        .skills-container {
-            background-color: #cc0000;
-            padding: 15px 30px;
-            border-radius: 25px;
+        /* --- Main Content Section --- */
+        main {
+            flex-grow: 1; /* ធ្វើឱ្យផ្នែកនេះរីកពេញកន្លែងដែលនៅសល់ */
             display: flex;
-            gap: 25px;
-            align-items: center;
+            position: relative; /* សម្រាប់ដាក់ខ្សែបន្ទាត់កណ្តាល */
+            padding: 40px 0;
+        }
+
+        /* ខ្សែបន្ទាត់ក្រហមនៅកណ្តាល */
+        main::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--divider-color);
+            transform: translateX(-50%);
+        }
+
+        .column {
+            flex: 1; /* ចែកទំហំស្មើគ្នា */
+            padding: 0 50px;
+        }
+
+        /* Typography Styles */
+        h1.main-title {
+            color: var(--accent-red);
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h2.sub-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        h2.sub-title span {
+            color: var(--accent-red);
+        }
+
+        .item {
+            margin-bottom: 35px;
+        }
+
+        .item-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        .item-title .kh-hint {
+            font-weight: normal;
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* --- Code Styles --- */
+        .code-pill {
+            display: inline-block;
+            background-color: var(--code-blue);
+            color: white;
+            font-family: var(--code-font);
+            font-size: 26px;
+            padding: 15px 40px;
+            border-radius: 50px; /* រាងមូល */
+            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.2);
+        }
+
+        .code-block-container {
+            background-color: var(--code-blue);
+            color: white;
+            border-radius: 25px; /* រាងបួនជ្រុងមូល */
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.2);
             width: fit-content;
         }
 
-        .skills-container img { height: 50px; }
-        
-        .php-oval {
-            background-color: #777bb3;
-            padding: 5px 15px;
-            border-radius: 50px;
-            border: 2px solid white;
-            display: flex;
-            align-items: center;
-        }
-        .php-oval img { height: 40px; }
-
-        /* ផ្នែករូបភាព Profile */
-        .image-side { width: 40%; text-align: right; }
-
-        .img-frame {
-            display: inline-block;
-            border: 6px solid var(--sky-blue);
-            border-radius: 35px;
-            overflow: hidden;
-            width: 340px;
-            height: 480px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .img-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* ជើងទំព័រ (Footer) */
-        footer {
-            background-color: var(--bbu-blue);
-            padding: 40px 30px 25px;
-            position: relative;
-        }
-
-        .hw-label {
-            position: absolute;
-            top: -20px;
-            left: 30px;
-            background-color: var(--bbu-blue);
-            color: white;
-            padding: 6px 20px;
-            border: 2px solid white;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .btn-group {
-            display: flex;
-            justify-content: space-around;
-            gap: 15px;
-        }
-
-        .nav-btn {
-            background-color: white;
-            color: var(--accent-red);
-            text-decoration: none;
-            flex: 1;
-            text-align: center;
-            padding: 12px 0;
-            border-radius: 25px;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.3s ease;
-        }
-
-        .nav-btn:hover {
-            transform: translateY(-5px);
-            background-color: #f0f0f0;
+        pre.code-block {
+            font-family: var(--code-font);
+            font-size: 20px;
+            line-height: 1.5;
+            margin: 0;
+            white-space: pre; /* រក្សាការដកឃ្លា */
         }
 
     </style>
 </head>
 <body>
 
-    <div class="portfolio-card">
-        <header>
-            <div class="logo-box">
-                <img src="RbgBBU.png" alt="BBU Logo">
-                <div class="uni-text">
-                    <span class="en">Build Bright University</span>
-                    <span class="kh">សាកលវិទ្យាល័យបៀលប្រាយ</span>
+    <header>
+        <div class="logo-container">
+            <img src="https://bbu.edu.kh/img/bbu-logo.png" alt="BBU Logo">
+            <div class="uni-name">
+                <span class="en">Build Bright University</span>
+                <span class="kh">សាកលវិទ្យាល័យបៀលប្រាយ</span>
+            </div>
+        </div>
+        <a href="#" class="home-btn">Home</a>
+    </header>
+
+    <main>
+        <div class="column left-col">
+            <h1 class="main-title">About: Data Types</h1>
+            <h2 class="sub-title">របៀបប្រើប្រាស់ <span>Data Types</span></h2>
+
+            <div class="item">
+                <div class="item-title">1. Integer (ចំនួនគត់)</div>
+                <div class="code-pill">$age = 25;</div>
+            </div>
+
+            <div class="item">
+                <div class="item-title">2. Float / Double (លេខទសភាគ)</div>
+                <div class="code-pill">$price = 12.5;</div>
+            </div>
+
+            <div class="item">
+                <div class="item-title">3. String (អក្សរ)</div>
+                <div class="code-pill">$name = "Sokha";</div>
+            </div>
+
+            <div class="item">
+                <div class="item-title">4. Boolean (true/false)</div>
+                <div class="code-pill">$isLogin = true;</div>
+            </div>
+        </div>
+
+        <div class="column right-col" style="padding-top: 115px;"> <div class="item">
+                <div class="item-title">5. Array (អារេ)</div>
+                <div class="code-pill">$colors = array("Red", "Green", "Blue");</div>
+            </div>
+
+            <div class="item">
+                <div class="item-title">6. Object (វត្ថុ) ប្រើជាមួយ Class</div>
+                <div class="code-block-container">
+<pre class="code-block">class Car {
+  public $color;
+}
+
+$myCar = new Car();
+$myCar->color = "Red";</pre>
                 </div>
             </div>
-            <div class="welcome-box">
-                <p class="top">Welcome To My</p>
-                <p class="bottom">Web Application Development</p>
-            </div>
-        </header>
 
-        <main class="main-body">
-            <div class="info-side">
-                <h1 class="hi-text">Hii! My name is</h1>
-                <div class="name-tag">Saing Hongly</div>
-                
-                <p class="status-text">I am a <span>Student Information</span></p>
-                <h2 class="major-text">Major: Infomation Teachnology</h2>
-
-                <div class="skills-container">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JS">
-                    <div class="php-oval">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP">
-                    </div>
-                </div>
+            <div class="item">
+                <div class="item-title">7. NULL (អថេរដែលគ្មានតម្លៃ)</div>
+                <div class="code-pill">$data = null;</div>
             </div>
 
-            <div class="image-side">
-                <div class="img-frame">
-                    <img src="me.jpg" alt="Profile Photo">
-                </div>
+            <div class="item">
+                <div class="item-title">8. Resource <span class="kh-hint">(ប្រើសម្រាប់ភ្ជាប់ធនធានខាងក្រៅ ដូចជា database ឬ file)</span></div>
+                <div class="code-pill" style="font-size: 20px;">$conn = mysqli_connect("localhost", "root", "", "test");</div>
             </div>
-        </main>
-
-        <footer>
-            <div class="hw-label">My Homework</div>
-            <div class="btn-group">
-                <a href="Viriable.html" class="nav-btn">Variable</a>
-                <a href="datatyes.html" class="nav-btn">Data Type</a>
-                <a href="#" class="nav-btn">Variable</a>
-                <a href="#" class="nav-btn">Variable</a>
-                <a href="#" class="nav-btn">Variable</a>
-                <a href="#" class="nav-btn">Variable</a>
-            </div>
-        </footer>
-    </div>
+        </div>
+    </main>
 
 </body>
-
 </html>
