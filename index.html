@@ -1,243 +1,217 @@
+<?php
+// You can change these later from PHP
+$name = "Saing Hongly";
+$major = "Information Technology";
+$university = "Build Bright University";
+?>
 <!DOCTYPE html>
-<html lang="km">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP Data Types Lesson - BBU</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700&family=Dancing+Script:wght@700&family=Inconsolata:wght@700&display=swap" rel="stylesheet">
-    <style>
-        /* កំណត់អថេរពណ៌ និងហ្វុន */
-        :root {
-            --header-blue: #161e5c;
-            --code-blue: #1a237e;
-            --accent-red: #e60000;
-            --divider-color: #ffcdd2;
-            --text-font: 'Kantumruy Pro', sans-serif;
-            --code-font: 'Inconsolata', monospace;
-            --script-font: 'Dancing Script', cursive;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        /* Reset CSS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<title>Student Profile</title>
 
-        body {
-            font-family: var(--text-font);
-            background-color: white;
-            /* ធ្វើឱ្យពេញអេក្រង់ */
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* --- Header Section --- */
-        header {
-            background-color: var(--header-blue);
-            color: white;
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-shrink: 0; /* ការពារមិនឱ្យ Header រួមតូច */
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-container img {
-            height: 60px;
-            margin-right: 15px;
-        }
-
-        .uni-name {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .uni-name .en { font-size: 20px; font-weight: bold; }
-        .uni-name .kh { font-size: 16px; }
-
-        .home-btn {
-            background-color: var(--accent-red);
-            color: white;
-            text-decoration: none;
-            padding: 10px 40px;
-            border-radius: 15px;
-            font-family: var(--script-font);
-            font-size: 28px;
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            transition: transform 0.2s ease;
-        }
-
-        .home-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        /* --- Main Content Section --- */
-        main {
-            flex-grow: 1; /* ធ្វើឱ្យផ្នែកនេះរីកពេញកន្លែងដែលនៅសល់ */
-            display: flex;
-            position: relative; /* សម្រាប់ដាក់ខ្សែបន្ទាត់កណ្តាល */
-            padding: 40px 0;
-        }
-
-        /* ខ្សែបន្ទាត់ក្រហមនៅកណ្តាល */
-        main::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: var(--divider-color);
-            transform: translateX(-50%);
-        }
-
-        .column {
-            flex: 1; /* ចែកទំហំស្មើគ្នា */
-            padding: 0 50px;
-        }
-
-        /* Typography Styles */
-        h1.main-title {
-            color: var(--accent-red);
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        h2.sub-title {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 40px;
-            color: #333;
-        }
-
-        h2.sub-title span {
-            color: var(--accent-red);
-        }
-
-        .item {
-            margin-bottom: 35px;
-        }
-
-        .item-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #222;
-        }
-
-        .item-title .kh-hint {
-            font-weight: normal;
-            font-size: 16px;
-            color: #555;
-        }
-
-        /* --- Code Styles --- */
-        .code-pill {
-            display: inline-block;
-            background-color: var(--code-blue);
-            color: white;
-            font-family: var(--code-font);
-            font-size: 26px;
-            padding: 15px 40px;
-            border-radius: 50px; /* រាងមូល */
-            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.2);
-        }
-
-        .code-block-container {
-            background-color: var(--code-blue);
-            color: white;
-            border-radius: 25px; /* រាងបួនជ្រុងមូល */
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.2);
-            width: fit-content;
-        }
-
-        pre.code-block {
-            font-family: var(--code-font);
-            font-size: 20px;
-            line-height: 1.5;
-            margin: 0;
-            white-space: pre; /* រក្សាការដកឃ្លា */
-        }
-
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="logo-container">
-            <img src="https://bbu.edu.kh/img/bbu-logo.png" alt="BBU Logo">
-            <div class="uni-name">
-                <span class="en">Build Bright University</span>
-                <span class="kh">សាកលវិទ្យាល័យបៀលប្រាយ</span>
-            </div>
-        </div>
-        <a href="#" class="home-btn">Home</a>
-    </header>
-
-    <main>
-        <div class="column left-col">
-            <h1 class="main-title">About: Data Types</h1>
-            <h2 class="sub-title">របៀបប្រើប្រាស់ <span>Data Types</span></h2>
-
-            <div class="item">
-                <div class="item-title">1. Integer (ចំនួនគត់)</div>
-                <div class="code-pill">$age = 25;</div>
-            </div>
-
-            <div class="item">
-                <div class="item-title">2. Float / Double (លេខទសភាគ)</div>
-                <div class="code-pill">$price = 12.5;</div>
-            </div>
-
-            <div class="item">
-                <div class="item-title">3. String (អក្សរ)</div>
-                <div class="code-pill">$name = "Sokha";</div>
-            </div>
-
-            <div class="item">
-                <div class="item-title">4. Boolean (true/false)</div>
-                <div class="code-pill">$isLogin = true;</div>
-            </div>
-        </div>
-
-        <div class="column right-col" style="padding-top: 115px;"> <div class="item">
-                <div class="item-title">5. Array (អារេ)</div>
-                <div class="code-pill">$colors = array("Red", "Green", "Blue");</div>
-            </div>
-
-            <div class="item">
-                <div class="item-title">6. Object (វត្ថុ) ប្រើជាមួយ Class</div>
-                <div class="code-block-container">
-<pre class="code-block">class Car {
-  public $color;
+<style>
+/* ===== RESET ===== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-$myCar = new Car();
-$myCar->color = "Red";</pre>
-                </div>
+body{
+    background:#dcdcdc;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* ===== MAIN CONTAINER (FULL LAPTOP SCREEN) ===== */
+.container{
+    width:95vw;
+    height:95vh;
+    background:#ffffff;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    display:flex;
+    flex-direction:column;
+}
+
+/* ===== HEADER ===== */
+.header{
+    background:#1f2f87;
+    color:white;
+    padding:20px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.header h2{
+    font-size:22px;
+}
+
+.header h3{
+    color:#ff2b2b;
+}
+
+/* ===== CONTENT ===== */
+.content{
+    flex:1;
+    display:flex;
+    padding:40px;
+    gap:40px;
+}
+
+/* LEFT SIDE */
+.left{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.left h1{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.name-btn{
+    background:#223a95;
+    color:white;
+    display:inline-block;
+    padding:12px 25px;
+    border-radius:25px;
+    font-size:22px;
+    margin-bottom:20px;
+    width:fit-content;
+}
+
+.left p{
+    font-size:22px;
+    margin:10px 0;
+}
+
+.skills{
+    margin-top:30px;
+    background:red;
+    padding:20px;
+    border-radius:15px;
+    display:flex;
+    gap:25px;
+    width:fit-content;
+}
+
+.skills img{
+    height:60px;
+}
+
+/* RIGHT SIDE IMAGE */
+.right{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.profile{
+    width:70%;
+    height:80%;
+    border-radius:20px;
+    border:4px solid #2b9cff;
+    object-fit:cover;
+}
+
+/* ===== FOOTER ===== */
+.footer{
+    background:#1f2f87;
+    padding:20px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+.footer div{
+    background:#eee;
+    padding:10px 25px;
+    border-radius:20px;
+    font-weight:bold;
+    color:red;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1000px){
+    .content{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .right{
+        order:-1;
+    }
+
+    .profile{
+        width:60%;
+        height:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h2><?php echo $university; ?></h2>
+        <h3>Welcome To My Web Application Development</h3>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="content">
+
+        <!-- LEFT -->
+        <div class="left">
+            <h1>Hii! My name is</h1>
+
+            <div class="name-btn">
+                <?php echo $name; ?>
             </div>
 
-            <div class="item">
-                <div class="item-title">7. NULL (អថេរដែលគ្មានតម្លៃ)</div>
-                <div class="code-pill">$data = null;</div>
-            </div>
+            <p>I am a <b>Student Information</b></p>
+            <p><b>Major:</b> <?php echo $major; ?></p>
 
-            <div class="item">
-                <div class="item-title">8. Resource <span class="kh-hint">(ប្រើសម្រាប់ភ្ជាប់ធនធានខាងក្រៅ ដូចជា database ឬ file)</span></div>
-                <div class="code-pill" style="font-size: 20px;">$conn = mysqli_connect("localhost", "root", "", "test");</div>
+            <div class="skills">
+                <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png">
+                <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png">
+                <img src="https://cdn-icons-png.flaticon.com/512/919/919830.png">
             </div>
         </div>
-    </main>
+
+        <!-- RIGHT -->
+        <div class="right">
+            <!-- replace with your image -->
+            <img src="profile.jpg" class="profile">
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div>Variable</div>
+        <div>Data Type</div>
+        <div>Variable</div>
+        <div>Variable</div>
+        <div>Variable</div>
+    </div>
+
+</div>
 
 </body>
 </html>
