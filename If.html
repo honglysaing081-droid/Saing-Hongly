@@ -130,7 +130,7 @@
                 <h2>សាកលវិទ្យាល័យបៀលប្រាយ</h2>
             </div>
         </div>
-        <button class="home-btn">Home</button>
+        <a href="index.html" class="home-btn">Home</a>
     </header>
 
     <main>
@@ -212,4 +212,5 @@
     </script>
 
 </body>
+
 </html>
