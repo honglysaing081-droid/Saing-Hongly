@@ -118,20 +118,15 @@ $phone_input = "";
 
 if (isset($_POST['predict'])) {
     $phone_input = $_POST['phone_number'];
-    // សម្អាតយកតែលេខ 
     $phone = preg_replace('/[^0-9]/', '', $phone_input);
     
-    if (strlen($phone) >= 6) {
-        // ១. ចាប់យកលេខ ៦ ខ្ទង់ចុងក្រោយ 
-        $lastSix = substr($phone, -6);
-        
-        // ២. យកលេខ ៦ ខ្ទង់ចុងក្រោយចែកនឹង 80 [cite: 3]
+    // កែសម្រួល៖ ត្រូវតែមាន ១០ ខ្ទង់គត់
+    if (strlen($phone) == 9) {
+        $lastSix = substr($phone, -6); // ចាប់យក ៦ ខ្ទង់ចុងក្រោយមកគណនា [cite: 6]
         $division = $lastSix / 80;
-        
-        // ៣. យកលេខក្រោយក្បៀសមកគុណនឹង 80 [cite: 3, 7]
-        // ឧទាហរណ៍: 0.9 x 80 = 72 [cite: 4]
-        $decimalPart = $division - (int)$division;
+        $decimalPart = $division - (int)$division; // យកលេខក្រោយក្បៀស [cite: 3, 7]
         $luckyNumber = round($decimalPart * 80);
+        if ($luckyNumber == 0) $luckyNumber = 80;
         
         // ប្រសិនបើលទ្ធផលជា 0 ត្រូវយក 80 
         if ($luckyNumber == 0) $luckyNumber = 80;
@@ -230,10 +225,10 @@ if (isset($_POST['predict'])) {
 
 <div class="header">
     <div class="bbu-logo">
-        <img src="https://via.placeholder.com/60x60?text=BBU" alt="BBU Logo"> 
+        <img src="RbgBBU.png" alt="BBU Logo"> 
         <span>Build Bright University<br><small>សាកលវិទ្យាល័យបៀលប្រាយ</small></span>
     </div>
-    <a href="#" class="home-btn">Home</a>
+    <a href="index.html" class="home-btn">Home</a>
 </div>
 
 <div class="container">
